@@ -2,7 +2,7 @@
 
 var RpcClient = require('../lib/amqp_rpc_client');
 var amqplib = require('amqplib');
-var expect = require('expect.js');
+var expect = require('expect');
 var Promise = require('bluebird');
 var sinon = require('sinon');
 

@@ -3,19 +3,33 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "amqplib": "^0.2.1",
+    "bluebird": "^2.3.11",
+    "uuid": "^2.0.1",
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "mocha": "^1.21.5",
+    "chai": "3.4.1",
+    "sinon-chai": "2.8.0 ",
+    "when": "~3.6.2",
+    "expect": "1.14.0"
+  },
   "scripts": {
     "test": "mocha"
   },
-  "dependencies": {
-    "lodash": "4.1.0",
-    "bluebird": "3.2.1",
-    "uuid": "2.0.1",
-    
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medseek-engineering/amqp_client.git"
   },
-  "devDependencies": {
-
-  },
-  "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/medseek-engineering/amqp_client/issues"
+  },
+  "homepage": "https://github.com/medseek-engineering/amqp_client#readme"
 }
