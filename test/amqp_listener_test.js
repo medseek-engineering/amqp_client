@@ -8,14 +8,16 @@ var sinon = require('sinon');
 describe('amqplistener', function () {
 
   describe('listen', function (done) {
-    var QUEUE_NAME = 'myqueue',
-      EXCHANGE_NAME = 'myexchange';
+    var QUEUE_NAME = 'myqueue';
+    var EXCHANGE_NAME = 'myexchange';
+    var EXCHANGE_TYPE = 'topic';
 
     var amqplib, conn, channel, callback;
 
     beforeEach(function (done) {
       channel = {
         prefetch: sinon.stub().returns(Promise.resolve()),
+        assertExchange: sinon.stub().returns(Promise.resolve()),
         assertQueue: sinon.stub().returns(Promise.resolve()),
         bindQueue: sinon.stub().returns(Promise.resolve()),
         consume: sinon.spy(),
@@ -33,7 +35,7 @@ describe('amqplistener', function () {
 
       callback = sinon.stub().returns(Promise.resolve(JSON.stringify({hello: 'there'})));
 
-      new AmqpListener(amqplib).listen('http://test.com', QUEUE_NAME, EXCHANGE_NAME, callback)
+      new AmqpListener(amqplib).listen('http://test.com', QUEUE_NAME, EXCHANGE_NAME, EXCHANGE_TYPE, callback)
         .finally(done);
     });
 
@@ -58,13 +60,15 @@ describe('amqplistener', function () {
   describe('listen called with prefetch value', function (done) {
     var QUEUE_NAME = 'myqueue',
       EXCHANGE_NAME = 'myexchange',
-      PREFETCH_VALUE = 4;
+      PREFETCH_VALUE = 4,
+      EXCHANGE_TYPE = 'topic';
 
     var amqplib, conn, channel, callback;
 
     beforeEach(function (done) {
       channel = {
         prefetch: sinon.stub().returns(Promise.resolve()),
+        assertExchange: sinon.stub().returns(Promise.resolve()),
         assertQueue: sinon.stub().returns(Promise.resolve()),
         bindQueue: sinon.stub().returns(Promise.resolve()),
         consume: sinon.spy(),
@@ -82,7 +86,7 @@ describe('amqplistener', function () {
 
       callback = sinon.stub().returns(Promise.resolve(JSON.stringify({hello: 'there'})));
 
-      new AmqpListener(amqplib).listen('http://test.com', QUEUE_NAME, EXCHANGE_NAME, callback, PREFETCH_VALUE)
+      new AmqpListener(amqplib).listen('http://test.com', QUEUE_NAME, EXCHANGE_NAME, EXCHANGE_TYPE, callback, PREFETCH_VALUE)
         .finally(done);
     });
 
