@@ -1,0 +1,21 @@
+{
+  "name": "amqp_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "lodash": "4.1.0",
+    "bluebird": "3.2.1",
+    "uuid": "2.0.1",
+    
+  },
+  "devDependencies": {
+
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
